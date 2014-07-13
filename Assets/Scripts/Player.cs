@@ -7,6 +7,8 @@ public class Player : MonoBehaviour {
 
 	public int playerSpeed = 15;
 
+	public static int Score = 0;
+
 	// variable to reference prefab - prefab = gameobject
 
 	public GameObject ProjectileFab;
@@ -43,6 +45,12 @@ public class Player : MonoBehaviour {
 
 			// file projectile
 			Instantiate(ProjectileFab, projectilePosition, Quaternion.identity);
+		}
+	}
+
+	void OnTriggerEnter(Collider other) {
+		if (other.gameObject.CompareTag ("Enemy")) {
+			DestroyObject (this.gameObject);
 		}
 	}
 }
